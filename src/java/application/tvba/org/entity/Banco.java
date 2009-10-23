@@ -36,19 +36,15 @@ public class Banco implements Serializable {
         
     }
 
-    /**
-     * @return the iddb
-     */
-    public Integer getIddb() {
-        return iddb;
+    public Integer getIdBanco() {
+        return idBanco;
     }
 
-    /**
-     * @param iddb the iddb to set
-     */
-    public void setIddb(Integer iddb) {
-        this.iddb = iddb;
+    public void setIdBanco(Integer idBanco) {
+        this.idBanco = idBanco;
     }
+
+    
 
     /**
      * @return the nome
@@ -129,7 +125,7 @@ public class Banco implements Serializable {
             return false;
         }
         final Banco other = (Banco) obj;
-        if (this.iddb != other.iddb && (this.iddb == null || !this.iddb.equals(other.iddb))) {
+        if (this.idBanco != other.idBanco && (this.idBanco == null || !this.idBanco.equals(other.idBanco))) {
             return false;
         }
         return true;
@@ -137,11 +133,10 @@ public class Banco implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 83 * hash + (this.iddb != null ? this.iddb.hashCode() : 0);
+        int hash = 7;
+        hash = 79 * hash + (this.idBanco != null ? this.idBanco.hashCode() : 0);
         return hash;
     }
-
 
     
 

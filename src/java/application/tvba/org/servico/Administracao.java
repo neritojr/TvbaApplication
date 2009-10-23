@@ -104,7 +104,7 @@ public class Administracao {
     @WebMethod(operationName = "listarBancoPorCodigo")
     public Banco listarBancoPorCodigo(@WebParam(name = "banco")
     Banco banco) {
-        return new BancoFacade().listarBancoPorCodigo(banco, banco.getIddb());
+        return new BancoFacade().listarBancoPorCodigo(banco, banco.getIdBanco());
     }
 
     /**
