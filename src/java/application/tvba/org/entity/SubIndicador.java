@@ -18,8 +18,7 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name="tb_cad_subindicador")
 public class SubIndicador implements Serializable  {
-
-    private static long serialVersionUID = 1L;
+   
 
     @Id
     @Column(nullable=false, name="idSubIndicador")
