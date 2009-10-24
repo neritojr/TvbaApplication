@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context autor="container"  >
+
+   <Resource
+    name="jdbc/bancoCliente"
+    factory="org.apache.tomcat.dbcp.dbcp.BasicDataSourceFactory"
+    type="javax.sql.DataSource"
+    username="dba"
+    password="Univ32Ciss263"
+    driverClassName="org.postgresql.Driver"
+    url="jdbc:postgresql://localhost:5432/bancoCliente"
+    initialSize="2"
+    maxWait="-1"
+    removeAbandoned="true"
+    maxActive="-1"
+    maxIdle="20"
+    removeAbandonedTimeout="300"
+    logAbandoned="true"
+    minIdle="1"
+   />
+
+    <!--
+    == DESCRIÇÃO DOS PARÂMETROS ==
+    initialSize= número de conexões ao iniciar aplicação
+    maxWait= tempo máximo de espera por conexão. -1 ilimitado
+    maxActive= máximo de conexões ativas no pool. -1 ilimitado.
+    maxIdle= máximo de conexões inativas para ser aproveitadas pelo pool.
+    removeAbandonedTimeout= tempo em segundos para autorizar fechamento de conexão
+    removeAbandoned= remove conexões inativas após o tempo configurado no removeAbandonedTimeout.
+    logAbandoned= garda log tipo stack traces ao fechar Statement ou Connections.
+    minIdle= número mínimo de conexões ativas no pool.
+     -->
+
+</Context>

@@ -34,7 +34,7 @@ public class IndicadorDao {
 
     }
 
-    public void consultarIndicadores(){
+    public void acompanharIndicadores(){
         
         List listaIndicadores = listarIndicadores();
 
@@ -43,11 +43,22 @@ public class IndicadorDao {
             acompanharIndicador.start();
         }
 
+    }
+
+    //Compara os valores em banco com os valores
+    //do Indicador (valorOtimizado, valorAceitavel, valorBaixo).
+    //esta função será usada pela Thread [ Acompanhar ]
+    public void consultarIndicadores(Indicador indicador){
+
+        
 
     }
 
+    //Faz consulta no banco do cliente
+    public void consultarScript(Indicador indicador){
 
 
+    }
 
 // O sistema deve mostrar os indicadores disponíveis (gravados em banco)
 // para que estes sejam usados nas consultas.
