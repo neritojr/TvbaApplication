@@ -6,7 +6,7 @@
 package application.tvba.org.abstractfactory.generic;
 
 import application.tvba.org.abstractfactory.generic.DaoGeneric;
-import application.tvba.org.dao.generic.CadastroDao;
+import application.tvba.org.dao.generic.GenericDao;
 
 /**
  *
@@ -14,24 +14,24 @@ import application.tvba.org.dao.generic.CadastroDao;
  */
 public class HibernateDAO implements DaoGeneric {
 
-    public CadastroDao getUsuarioDao(){
-        return new CadastroDao();
+    public GenericDao getUsuarioDao(){
+        return new GenericDao();
     }
 
-    public CadastroDao getBancoDao() {
-        return new CadastroDao();
+    public GenericDao getBancoDao() {
+        return new GenericDao();
     }
 
-    public CadastroDao getIndicadorDao() {
-        return new CadastroDao();
+    public GenericDao getIndicadorDao() {
+        return new GenericDao();
     }
 
-    public CadastroDao getSubIndicadorDao() {
-        return new CadastroDao();
+    public GenericDao getSubIndicadorDao() {
+        return new GenericDao();
     }
 
-    public CadastroDao getDireitoAcessoDao() {
-        return new CadastroDao();
+    public GenericDao getDireitoAcessoDao() {
+        return new GenericDao();
     }
 
 }

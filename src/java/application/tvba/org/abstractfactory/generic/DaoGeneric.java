@@ -2,7 +2,7 @@
 
 package application.tvba.org.abstractfactory.generic;
 
-import application.tvba.org.dao.generic.CadastroDao;
+import application.tvba.org.dao.generic.GenericDao;
 
 /**
  *
@@ -10,11 +10,11 @@ import application.tvba.org.dao.generic.CadastroDao;
  */
 public interface DaoGeneric {
 
-    public CadastroDao getUsuarioDao();
-    public CadastroDao getBancoDao();
-    public CadastroDao getIndicadorDao();
-    public CadastroDao getSubIndicadorDao();
-    public CadastroDao getDireitoAcessoDao();
+    public GenericDao getUsuarioDao();
+    public GenericDao getBancoDao();
+    public GenericDao getIndicadorDao();
+    public GenericDao getSubIndicadorDao();
+    public GenericDao getDireitoAcessoDao();
     
 
 }

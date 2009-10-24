@@ -5,7 +5,7 @@
 
 package application.tvba.org.facade.cadastros;
 
-import application.tvba.org.dao.generic.CadastroDao;
+import application.tvba.org.dao.generic.GenericDao;
 import application.tvba.org.entity.DireitoAcesso;
 import application.tvba.org.singleton.DaoFactory;
 import java.util.List;
@@ -20,7 +20,7 @@ public class DireitoAcessoFacade {
 
     //** Lista todos os Bancos gravados no banco **/
     public List<DireitoAcesso> listarDireitoAcessos(){
-        CadastroDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
+        GenericDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
         List lda = genericDao.listarTodos(DireitoAcesso.class);
         return lda;
     }
@@ -28,7 +28,7 @@ public class DireitoAcessoFacade {
     public boolean adicionarBanco(DireitoAcesso direitoAcesso){
         Boolean resultado = false;
         try {
-            CadastroDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
+            GenericDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
             genericDao.abreTransacao();
             genericDao.gravar(direitoAcesso);
             genericDao.commit();
@@ -42,7 +42,7 @@ public class DireitoAcessoFacade {
     public boolean excluirUsuario(DireitoAcesso direitoAcesso){
         Boolean resultado = false;
         try {
-            CadastroDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
+            GenericDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
             genericDao.abreTransacao();
             genericDao.excluir(direitoAcesso);
             genericDao.commit();
@@ -56,7 +56,7 @@ public class DireitoAcessoFacade {
     public boolean atualizarUsuario(DireitoAcesso direitoAcesso){
         Boolean resultado = false;
         try {
-            CadastroDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
+            GenericDao genericDao = DaoFactory.getInstance().getDaoGeneric(DaoFactory.TIPO_HIBERNATE).getDireitoAcessoDao();
             genericDao.abreTransacao();
             genericDao.atualizar(direitoAcesso);
             genericDao.commit();

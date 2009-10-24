@@ -15,7 +15,7 @@ import org.hibernate.criterion.Restrictions;
  *
  * @author marialvo
  */
-public class CadastroDao {
+public class GenericDao {
 
     private Session session = null;
     
@@ -33,6 +33,11 @@ public class CadastroDao {
 
     public void excluir(Object objeto) throws HibernateException {
         this.getSession().delete(objeto);
+    }
+
+    public void pegarIndicadoresAtivos(){
+        
+
     }
 
     public void atualizar(Object objeto) throws HibernateException {
@@ -71,7 +76,7 @@ public class CadastroDao {
         this.getSession().getTransaction().rollback();
     }
 
-    public CadastroDao() {
+    public GenericDao() {
         HibernateFactory hf = HibernateFactory.getInstance();
         this.setSession(hf.getSession());
     }
