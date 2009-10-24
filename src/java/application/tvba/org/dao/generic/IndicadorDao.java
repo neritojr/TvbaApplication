@@ -5,9 +5,16 @@
 
 package application.tvba.org.dao.generic;
 
+import application.tvba.org.dao.ConexaoCliente;
 import application.tvba.org.entity.Indicador;
 import application.tvba.org.singleton.DaoFactory;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.hibernate.Session;
 
 /**
@@ -42,21 +49,6 @@ public class IndicadorDao {
             Acompanhar acompanharIndicador = new Acompanhar((Indicador)listaIndicadores.get(it));
             acompanharIndicador.start();
         }
-
-    }
-
-    //Compara os valores em banco com os valores
-    //do Indicador (valorOtimizado, valorAceitavel, valorBaixo).
-    //esta função será usada pela Thread [ Acompanhar ]
-    public void consultarIndicadores(Indicador indicador){
-
-        
-
-    }
-
-    //Faz consulta no banco do cliente
-    public void consultarScript(Indicador indicador){
-
 
     }
 
