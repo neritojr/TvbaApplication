@@ -7,10 +7,14 @@ package application.tvba.org.dao.generic;
 
 import application.tvba.org.dao.ConexaoCliente;
 import application.tvba.org.entity.Indicador;
+import application.tvba.org.entity.Movimentacao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,7 +42,7 @@ public class Acompanhar extends Thread{
     //do Indicador (valorOtimizado, valorAceitavel, valorBaixo).
     //esta função será usada pela Thread [ Acompanhar ]
     public String consultarIndicadores(Indicador indicador){
-        Integer consulta = consultarScript(indicador);
+        Float consulta = consultarScript(indicador);
         String mensagem="";
         if(consulta<=indicador.getValorBaixo()){
             mensagem="Atenção! Valor do indicador "+indicador.getNome()+" está muito baixo.\n" +
@@ -55,27 +59,55 @@ public class Acompanhar extends Thread{
     }
 
     //Faz consulta no banco do cliente
-    public Integer consultarScript(Indicador indicador){
+    public Float consultarScript(Indicador indicador){
         Connection con = ConexaoCliente.getConexao();
-        Integer resultadoConsulta=null;
+        Float resultadoConsulta=null;
         try {
             Statement statement = con.createStatement();
             //Executa o Script do Indicador
             ResultSet result = statement.executeQuery(indicador.getScript());
 
             while(result.next()){
-                // CONFIGURAR CONFORME O SCRIPT
-                resultadoConsulta=result.getInt(1);
+                // CONFIGURAR PARÂMETRO CONFORME O SCRIPT   ******
+                resultadoConsulta=result.getFloat(1);
             }
 
-
+            statement.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(IndicadorDao.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("IndicadorDao.consultarScript.");
+            System.out.println("IndicadorDao.consultarScript. \n"+ex.toString());
             ex.printStackTrace();
+        }finally{
+            try{
+                con.close();
+            }catch(SQLException ex){
+                ex.printStackTrace();
+                Logger.getLogger(IndicadorDao.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("IndicadorDao.consultarScript. fechar conexão\n"+ex.toString());
+            }
+
         }
 
+        Calendar calendar = new GregorianCalendar();
+        Date data = new Date();
+        calendar.setTime(data);
+        
+        try{
+            Movimentacao mov = new Movimentacao();
+            //Atribui valores para gravar na tabela [ tb_movimentacao ]
+            mov.setDataMovimentacao(calendar.getTime());
+            mov.setIdIndicador(mov.getIdIndicador());
+            mov.setStatus("T");
+            mov.setValorRetorno(mov.getValorRetorno());
+
+            MovimentacaoDao movDao = new MovimentacaoDao();
+            movDao.gravarMovimentacao(mov);
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+      
         return resultadoConsulta;
     }
 

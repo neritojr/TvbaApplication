@@ -19,8 +19,8 @@
         <h1>TVBA Application</h1>
         
         <% Calendar calendar = new GregorianCalendar();
-           Date trialTime = new Date();
-           calendar.setTime(trialTime); %>
+           Date data = new Date();
+           calendar.setTime(data); %>
 
         <% String mensagem = "WebService ativo. Iniciado em "+
                 calendar.get(calendar.DATE)+"/"+calendar.get(calendar.MONTH) +"/"+
